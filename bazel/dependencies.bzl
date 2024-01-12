@@ -34,3 +34,13 @@ def bazel_iwyu_dependencies():
         sha256 = "3b620033ca48fcd6f5ef2ac85e0f6ec5639605fa2f627968490e52fc91a9932f",
         strip_prefix = "bazel-skylib-1.3.0",
     )
+
+    maybe(
+        http_archive,
+        name = "io_tweag_rules_nixpkgs",
+        sha256 = "980edfceef2e59e1122d9be6c52413bc298435f0a3d452532b8a48d7562ffd67",
+        strip_prefix = "rules_nixpkgs-0.10.0",
+        urls = ["https://github.com/tweag/rules_nixpkgs/releases/download/v0.10.0/rules_nixpkgs-0.10.0.tar.gz"],
+    )
+
+    rules_nixpkgs_dependencies()
