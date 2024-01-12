@@ -4,8 +4,10 @@ sh_binary(
     name = "run_iwyu",
     srcs = ["run_iwyu.sh"],
     data = [
-        "@iwyu_prebuilt_pkg//:bin/include-what-you-use",
-        "@iwyu_prebuilt_pkg//:include",
+        # "@iwyu_prebuilt_pkg//:bin/include-what-you-use",
+        # "@iwyu_prebuilt_pkg//:include",
+        "@include_what_you_use//:bin",
+
     ],
     deps = ["@bazel_tools//tools/bash/runfiles"],
 )
