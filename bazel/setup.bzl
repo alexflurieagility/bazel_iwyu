@@ -14,3 +14,4 @@ def bazel_iwyu_setup():
         attribute_path = "include-what-you-use",
         repository = "@nixpkgs",
     )
+

@@ -42,5 +42,3 @@ def bazel_iwyu_dependencies():
         strip_prefix = "rules_nixpkgs-0.10.0",
         urls = ["https://github.com/tweag/rules_nixpkgs/releases/download/v0.10.0/rules_nixpkgs-0.10.0.tar.gz"],
     )
-
-    rules_nixpkgs_dependencies()

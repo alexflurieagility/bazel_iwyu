@@ -4,6 +4,12 @@ load("@com_github_storypku_bazel_iwyu//bazel:dependencies.bzl", "bazel_iwyu_depe
 
 bazel_iwyu_dependencies()
 
+load("@com_github_storypku_bazel_iwyu//bazel:nix_deps.bzl", "bazel_iwyu_nix_deps")
+
+bazel_iwyu_nix_deps()
+
+load("@com_github_storypku_bazel_iwyu//bazel:setup.bzl", "bazel_iwyu_setup")
+
 bazel_iwyu_setup()
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
