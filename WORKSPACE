@@ -1,5 +1,34 @@
 workspace(name = "com_github_storypku_bazel_iwyu")
 
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "io_tweag_rules_nixpkgs",
+    sha256 = "980edfceef2e59e1122d9be6c52413bc298435f0a3d452532b8a48d7562ffd67",
+    strip_prefix = "rules_nixpkgs-0.10.0",
+    urls = ["https://github.com/tweag/rules_nixpkgs/releases/download/v0.10.0/rules_nixpkgs-0.10.0.tar.gz"],
+)
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:repositories.bzl", "rules_nixpkgs_dependencies")
+
+rules_nixpkgs_dependencies()
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_git_repository", "nixpkgs_package", "nixpkgs_cc_configure")
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:toolchains/go.bzl", "nixpkgs_go_configure")
+
+nixpkgs_git_repository(
+    name = "nixpkgs",
+    revision = "23.11", # Any tag or commit hash
+    sha256 = "" # optional sha to verify package integrity!
+)
+
+nixpkgs_package(
+    name = "include_what_you_use",
+    attribute_path = "include-what-you-use",
+    repository = "@nixpkgs",
+)
+
 load("@com_github_storypku_bazel_iwyu//bazel:dependencies.bzl", "bazel_iwyu_dependencies")
 
 bazel_iwyu_dependencies()
@@ -41,31 +70,3 @@ http_archive(
     ],
 )
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-http_archive(
-    name = "io_tweag_rules_nixpkgs",
-    sha256 = "980edfceef2e59e1122d9be6c52413bc298435f0a3d452532b8a48d7562ffd67",
-    strip_prefix = "rules_nixpkgs-0.10.0",
-    urls = ["https://github.com/tweag/rules_nixpkgs/releases/download/v0.10.0/rules_nixpkgs-0.10.0.tar.gz"],
-)
-
-load("@io_tweag_rules_nixpkgs//nixpkgs:repositories.bzl", "rules_nixpkgs_dependencies")
-
-rules_nixpkgs_dependencies()
-
-load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_git_repository", "nixpkgs_package", "nixpkgs_cc_configure")
-
-load("@io_tweag_rules_nixpkgs//nixpkgs:toolchains/go.bzl", "nixpkgs_go_configure")
-
-nixpkgs_git_repository(
-    name = "nixpkgs",
-    revision = "23.11", # Any tag or commit hash
-    sha256 = "" # optional sha to verify package integrity!
-)
-
-nixpkgs_package(
-    name = "include_what_you_use",
-    attribute_path = "include-what-you-use",
-    repository = "@nixpkgs",
-)
