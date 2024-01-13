@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 # Ref: https://github.com/bazelbuild/bazel/blob/d2750262695b1cef7365e5491711ce411cd85215/tools/bash/runfiles/runfiles.bash
 # Stack Overflow: https://stackoverflow.com/questions/53472993/how-do-i-make-a-bazel-sh-binary-target-depend-on-other-binary-targets
