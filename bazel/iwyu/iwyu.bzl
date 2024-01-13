@@ -69,10 +69,11 @@ def _run_iwyu(ctx, iwyu_executable, iwyu_mappings, iwyu_options, flags, target, 
         outputs = [outfile],
         arguments = [args],
         executable = iwyu_executable,
-        # It seems no-sandbox was required for x-compilation support
-        execution_requirements = {
-            "no-sandbox": "1",
-        },
+        use_default_shell_env = True,
+        # # It seems no-sandbox was required for x-compilation support
+        # execution_requirements = {
+        #     "no-sandbox": "1",
+        # },
         mnemonic = "iwyu",
         progress_message = "Run include-what-you-use on {}".format(infile.short_path),
     )
