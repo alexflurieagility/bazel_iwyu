@@ -21,9 +21,9 @@ readonly RESET='\033[0m'
 
 # IWYU_BINARY="$(rlocation iwyu_prebuilt_pkg/bin/include-what-you-use)"
 
-# IWYU_BINARY="$(rlocation include_what_you_use/bin)/include-what-you-use"
+IWYU_BINARY="$(rlocation include_what_you_use/bin)/include-what-you-use"
 
-IWYU_BINARY="include-what-you-use"
+# IWYU_BINARY="include-what-you-use"
 
 function error() {
   (echo >&2 -e "${RED}[ERROR]${RESET} $*")
