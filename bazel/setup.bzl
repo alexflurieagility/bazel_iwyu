@@ -4,7 +4,7 @@ load("@io_tweag_rules_nixpkgs//nixpkgs:toolchains/go.bzl", "nixpkgs_go_configure
 
 def bazel_iwyu_setup():
     nixpkgs_git_repository(
-        name = "nixpkgs",
+        name = "nixpkgs_iwyu",
         revision = "23.11", # Any tag or commit hash
         sha256 = "" # optional sha to verify package integrity!
     )
@@ -12,6 +12,6 @@ def bazel_iwyu_setup():
     nixpkgs_package(
         name = "include_what_you_use",
         attribute_path = "include-what-you-use",
-        repository = "@nixpkgs",
+        repository = "@nixpkgs_iwyu",
     )
 

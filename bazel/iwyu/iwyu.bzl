@@ -77,7 +77,7 @@ def _run_iwyu(ctx, iwyu_executable, iwyu_mappings, iwyu_options, flags, target, 
         mnemonic = "iwyu",
         progress_message = "Run include-what-you-use on {}".format(infile.short_path),
     )
-    return outfile
+    return [DefaultInfo(files = depset(outfile))]
 
 def _rule_sources(ctx):
     srcs = []
